@@ -1,0 +1,189 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>MostlyPresentPerson.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">MostlyPresentPerson.agent</P></HEAD><IMG SRC=images/Persons.MostlyPresentPerson.png border=1 alt="Flowchart for MostlyPresentPerson.agent" title="Flowchart for MostlyPresentPerson.agent"></P>The package name is "Persons".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+<li>Components from java.util.Vector</li></p>
+</BLOCKQUOTE><P></p>
+The class "MostlyPresentPerson" is defined with visibility "public" which extends parent class "Person" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "initialize" method has visibility     "public" and parameters [String AgentName, HashMap hm, Vector publicVacationVector]. This is the step behavior. The block is tagged with the name "Initialize agent ".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "initialize" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         This is a task.</p>
+        float sicknessMean = ((float)hm.get("SicknessMean"))</p>
+        float sicknessDev = ((float)hm.get("SicknessDev"))</p>
+        float leisureDurationMean = ((int)hm.get("LeisureDurationMean"))</p>
+        float leisureDurationDev = ((int)hm.get("LeisureDurationDev"))</p>
+        float MPLeisure = ((int)hm.get("MPLeisure"))</p>
+         This is a task.</p>
+        name = AgentName</p>
+        status = Status.Normal</p>
+        Random rand = new Random()</p>
+         This is a task.</p>
+        sicknessVector = createSicknessVector(sicknessMean, sicknessDev)</p>
+        pVacationVector = publicVacationVector</p>
+         This is a task.</p>
+        int x = (int) (rand.nextGaussian() + MPLeisure)</p>
+        leisureVector = createLeisureVector(x)</p>
+         This is a task.</p>
+        leisureDuration = (int) (leisureDurationDev rand.nextGaussian() + leisureDurationMean)</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "showStatus" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Show Status".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "showStatus" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        System.out.println("Name = " + name)</p>
+        System.out.println("Member Of = " + getMemberOf().getName());</p>
+        System.out.println("Sickness Days = ")</p>
+        ListIterator iter = sicknessVector.listIterator();</p>
+</p>
+         This is a loop.</p>
+        while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println(iter.next());</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Leisure Days of Week = ");</p>
+        iter = leisureVector.listIterator();</p>
+</p>
+         This is a loop.</p>
+        while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println(iter.next());</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Leisure Duration = " + leisureDuration);</p>
+        System.out.println("Public Vacation of Year = ");</p>
+        iter = pVacationVector.listIterator();</p>
+</p>
+         This is a loop.</p>
+        while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println(iter.next());</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Weekly Routine : ")</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0; i < 7;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println("Day " + (i))</p>
+            iter = weeklyRoutine.get(i).listIterator();</p>
+</p>
+              </p>
+            for (int j =0;j < 96;j++) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                System.out.println("Quarter : " + (j+1) + " Status : " + iter.next())</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "refresh" method has visibility     "public" has return type "def" and parameters [HashMap hm]. This is the step behavior. The block is tagged with the name "Refresh".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "refresh" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        float leisureDurationMean = ((int)hm.get("LeisureDurationMean"))</p>
+        float leisureDurationDev = ((int)hm.get("LeisureDurationDev"))</p>
+        float MPLeisure = ((int)hm.get("MPLeisure"))</p>
+        float vacationAbsence = ((float)hm.get("VacationAbsence"))</p>
+         This is a task.</p>
+        Random rand = new Random()</p>
+        int x = (int) (rand.nextGaussian() + MPLeisure)</p>
+        leisureDuration = (int) (leisureDurationDev rand.nextGaussian() + leisureDurationMean)</p>
+        leisureVector = createLeisureVector(x)</p>
+        weeklyRoutine = fillWeeklyRoutine(vacationAbsence)</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>

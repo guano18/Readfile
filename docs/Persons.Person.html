@@ -1,0 +1,658 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>Person.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">Person.agent</P></HEAD><IMG SRC=images/Persons.Person.png border=1 alt="Flowchart for Person.agent" title="Flowchart for Person.agent"></P>The package name is "Persons".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+<li>Components from Consumers.*</li></p>
+<li>Components from java.util.Vector</li></p>
+</BLOCKQUOTE><P></p>
+The class "Person" is defined with visibility "public" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    <li>There is a field named "name" with visibility "public" of type "String" and default value "". The person's Name The block is tagged with the name "Person Name".</li></p>
+</p>
+    <li>There is a field named "status" with visibility "public" of type "Status" and default value null. The person's status The block is tagged with the name "Person Status".</li></p>
+</p>
+    <li>There is a field named "pVacationVector" with visibility "public" of type "Vector" and default value new Vector(). Vector containing the days of public vacation The block is tagged with the name "Public Vacation Vector".</li></p>
+</p>
+    <li>There is a field named "sicknessVector" with visibility "public" of type "Vector" and default value new Vector(). Vector containing the days of sickness The block is tagged with the name "Sickness Vector".</li></p>
+</p>
+    <li>There is a field named "leisureDuration" with visibility "public" of type "int" and default value 0. Duration of leisure activities The block is tagged with the name "Leisure Duration".</li></p>
+</p>
+    <li>There is a field named "dailyRoutine" with visibility "public" of type "Vector" and default value new Vector(). Vector containing the daily program of the person The block is tagged with the name "Daily Routine".</li></p>
+</p>
+    <li>There is a field named "leisureVector" with visibility "public" of type "Vector" and default value new Vector(). Vector containing the days of leisure activities The block is tagged with the name "Leisure Vector".</li></p>
+</p>
+    <li>There is a field named "memberOf" with visibility "public" of type "HouseHold" and default value null. Household the person is member of The block is tagged with the name "Member Of".</li></p>
+</p>
+    <li>There is a field named "weeklyRoutine" with visibility "public" of type "Vector" and default value new Vector(). Vector containing the weekly program of the person The block is tagged with the name "Weekly Routine".</li></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "initialize" method has visibility     "public". The initialization behavior of the person agent The block is tagged with the name "Initialize".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "initialize" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "isSleeping" method has visibility     "public" has return type "boolean". This is the step behavior. The block is tagged with the name "Is In Bed?".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "isSleeping" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+</p>
+         This is an agent decision.</p>
+        if (status == Status.Sleeping) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 1</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 0</p>
+</p>
+        </BLOCKQUOTE></p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "isAtWork" method has visibility     "public" has return type "boolean". This is the step behavior. The block is tagged with the name "Is At Work?".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "isAtWork" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+</p>
+         This is an agent decision.</p>
+        if (status == Status.Working) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 1</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 0</p>
+</p>
+        </BLOCKQUOTE></p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "isLeisure" method has visibility     "public" has return type "boolean". This is the step behavior. The block is tagged with the name "Is On Leisure?".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "isLeisure" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+</p>
+         This is an agent decision.</p>
+        if (status == Status.Leisure) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 1</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 0</p>
+</p>
+        </BLOCKQUOTE></p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "isVacation" method has visibility     "public" has return type "boolean". This is the step behavior. The block is tagged with the name "Is On Vacation?".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "isVacation" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+</p>
+         This is an agent decision.</p>
+        if (status == Status.Vacation) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 1</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 0</p>
+</p>
+        </BLOCKQUOTE></p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "isSick" method has visibility     "public" has return type "boolean". This is the step behavior. The block is tagged with the name "Is Sick?".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "isSick" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+</p>
+         This is an agent decision.</p>
+        if (status == Status.Sick) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 1</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 0</p>
+</p>
+        </BLOCKQUOTE></p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "createLeisureVector" method has visibility     "public" has return type "Vector" and parameters [int counter]. This is the step behavior. The block is tagged with the name "Create Leisure Vector".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "createLeisureVector" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        Vector v = new Vector()</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0; i < counter; i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            int day = (int) (RandomDraw(0.0, 7.0))</p>
+            v.add(day)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        java.util.Collections.sort(v);</p>
+        returnValue = v</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillDailyRoutine" method has visibility     "public" and parameters [int day, float vacationAbsence]. Filling the daily program of a person The block is tagged with the name "Fill Daily Routine".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillDailyRoutine" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         This is a task.</p>
+        Vector v = new Vector(96)</p>
+        int weekday = day % 7</p>
+        setDailyRoutine(new Vector())</p>
+        Status st</p>
+        System.out.println("Day = " + day + " WeekDay = " + weekday)</p>
+</p>
+         This is an agent decision.</p>
+        if (sicknessVector.contains(day)) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            fillSick()</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+             This is an agent decision.</p>
+            if (pVacationVector.contains(day) || (this instanceof WorkingPerson && vacationVector.contains(day))) <BLOCKQUOTE></p>
+</p>
+</p>
+                 This is an agent decision.</p>
+                if (RandomDrawAgainstThreshold(vacationAbsence)) <BLOCKQUOTE></p>
+</p>
+</p>
+                     This is a loop.</p>
+                    for (int i = 1;i < 97; i++) <BLOCKQUOTE></p>
+</p>
+                         This is a task.</p>
+                        st = Status.Vacation</p>
+                        dailyRoutine.add(st)</p>
+</p>
+                    </BLOCKQUOTE></p>
+</p>
+</p>
+                </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    normalFill()</p>
+                    addLeisure(weekday)</p>
+</p>
+                </BLOCKQUOTE></p>
+</p>
+            </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                normalFill()</p>
+</p>
+                 This is an agent decision.</p>
+                if (this instanceof WorkingPerson) <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    int index = workingDays.indexOf(weekday)</p>
+</p>
+                     This is an agent decision.</p>
+                    if (index > -1) <BLOCKQUOTE></p>
+</p>
+                         This is a task.</p>
+                        fillWork()</p>
+                        addLeisureWorking(weekday)</p>
+</p>
+                    </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                         This is a task.</p>
+                        addLeisure(weekday)</p>
+</p>
+                    </BLOCKQUOTE></p>
+</p>
+                </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    addLeisure(weekday)</p>
+</p>
+                </BLOCKQUOTE></p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+        </BLOCKQUOTE></p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "createSicknessVector" method has visibility     "public" has return type "Vector" and parameters [float mean, float dev]. This is the step behavior. The block is tagged with the name "Create Sickness Vector".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "createSicknessVector" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        Random rand = new Random()</p>
+        int days = (int) (dev rand.nextGaussian() + mean)</p>
+        Vector v = new Vector(days)</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0; i < days; i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            int x = (int) (RandomDraw(0.0,364.0) + 1)</p>
+            ListIterator iter = v.listIterator();</p>
+</p>
+             This is a loop.</p>
+            while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                int temp = (int)iter.next()</p>
+</p>
+                 This is an agent decision.</p>
+                if (x == temp) <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    x = x + 1</p>
+                    iter = v.listIterator();</p>
+</p>
+                </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                </BLOCKQUOTE></p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            v.add(x)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        java.util.Collections.sort(v);</p>
+        returnValue = v</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "showStatus" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Show Status".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "showStatus" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "addLeisure" method has visibility     "public" has return type "Object" and parameters [int weekday]. This is the step behavior. The block is tagged with the name "Add Leisure To Routine of a day".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "addLeisure" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        ListIterator iter = leisureVector.listIterator();</p>
+        Status st</p>
+</p>
+         This is a loop.</p>
+        while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+</p>
+             This is an agent decision.</p>
+            if (iter.next() == weekday) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                int start = RandomDraw(29.0,75.0)</p>
+</p>
+                 This is a loop.</p>
+                for (int i = start;i < start +leisureDuration;i++) <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    st = Status.Leisure</p>
+                    dailyRoutine.set(i-1,st)</p>
+</p>
+                </BLOCKQUOTE></p>
+</p>
+</p>
+            </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "normalFill" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Normal Day Fill".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "normalFill" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        Status st</p>
+</p>
+         This is a loop.</p>
+        for (int i = 1;i < 25;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            st = Status.Sleeping</p>
+            dailyRoutine.add(st)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+</p>
+         This is a loop.</p>
+        for (int i = 25;i < 91;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            st = Status.Normal</p>
+            dailyRoutine.add(st)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+</p>
+         This is a loop.</p>
+        for (int i = 91;i < 97;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            st = Status.Sleeping</p>
+            dailyRoutine.add(st)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillSick" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Fill Sickness Day".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillSick" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        Status st</p>
+</p>
+         This is a loop.</p>
+        for (int i = 1;i < 25;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            st = Status.Sleeping</p>
+            dailyRoutine.add(st)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+</p>
+         This is a loop.</p>
+        for (int i = 25;i < 91; i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            st = Status.Sick</p>
+            dailyRoutine.add(st)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+</p>
+         This is a loop.</p>
+        for (int i = 91;i < 97;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            st = Status.Sleeping</p>
+            dailyRoutine.add(st)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillWeeklyRoutine" method has visibility     "public" has return type "Vector" and parameters [float vacationAbsence]. This is the step behavior. The block is tagged with the name "Fill Weekly Routine".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillWeeklyRoutine" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        Vector v = new Vector()</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0;i < 7;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            fillDailyRoutine(i,vacationAbsence)</p>
+            v.add(dailyRoutine)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        returnValue = v</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "refresh" method has visibility     "public" has return type "def". Refreshing weekly program The block is tagged with the name "Refresh".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "refresh" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>

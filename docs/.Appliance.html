@@ -1,0 +1,398 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>Appliance.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">Appliance.agent</P></HEAD>The package name is "bin.Appliances".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+<li>Components from test.*</li></p>
+<li>Components from java.util.Vector</li></p>
+</BLOCKQUOTE><P></p>
+The class "Appliance" is defined with visibility "public" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    <li>There is a field named "name" with visibility "public" of type "String" and default value "". This is an agent property. The block is tagged with the name "Name".</li></p>
+</p>
+    <li>There is a field named "saturation" with visibility "public" of type "float" and default value 0. This is an agent property. The block is tagged with the name "Saturation".</li></p>
+</p>
+    <li>There is a field named "consumptionShare" with visibility "public" of type "float" and default value 0. This is an agent property. The block is tagged with the name "Consumption Share".</li></p>
+</p>
+    <li>There is a field named "baseLoadShare" with visibility "public" of type "float" and default value 0. This is an agent property. The block is tagged with the name "Base Load Share".</li></p>
+</p>
+    <li>There is a field named "power" with visibility "public" of type "int" and default value 0. This is an agent property. The block is tagged with the name "Power".</li></p>
+</p>
+    <li>There is a field named "cycleDuration" with visibility "public" of type "int" and default value 0. This is an agent property. The block is tagged with the name "Cycle Duration".</li></p>
+</p>
+    <li>There is a field named "od" with visibility "public" of type "boolean" and default value 0. This is an agent property. The block is tagged with the name "Occupancy Dependence".</li></p>
+</p>
+    <li>There is a field named "inUse" with visibility "public" of type "boolean" and default value 0. This is an agent property. The block is tagged with the name "In Use".</li></p>
+</p>
+    <li>There is a field named "probabilitySeason" with visibility "public" of type "HashMap" and default value null. This is an agent property. The block is tagged with the name "Probability Season".</li></p>
+</p>
+    <li>There is a field named "probabilityWeekday" with visibility "public" of type "HashMap" and default value null. This is an agent property. The block is tagged with the name "Probability Weekday".</li></p>
+</p>
+    <li>There is a field named "probabilityDaytime" with visibility "public" of type "HashMap" and default value null. This is an agent property. The block is tagged with the name "Probability Daytime".</li></p>
+</p>
+    <li>There is a field named "operationVector" with visibility "public" of type "Vector" and default value new Vector(). This is an agent property. The block is tagged with the name "Operation Vector".</li></p>
+</p>
+    <li>There is a field named "loadVector" with visibility "public" of type "Vector" and default value new Vector(). This is an agent property. The block is tagged with the name "Load Vector".</li></p>
+</p>
+    <li>There is a field named "memberOf" with visibility "public" of type "HouseHold" and default value null. This is an agent property. The block is tagged with the name "Member Of".</li></p>
+</p>
+    <li>There is a field named "dailyOperation" with visibility "public" of type "Vector" and default value new Vector(). This is an agent property. The block is tagged with the name "Daily Operation".</li></p>
+</p>
+    <li>There is a field named "weeklyOperation" with visibility "public" of type "Vector" and default value new Vector(7). This is an agent property. The block is tagged with the name "Weekly Operation".</li></p>
+</p>
+    <li>There is a field named "weeklyLoadVector" with visibility "public" of type "Vector" and default value new Vector(7). This is an agent property. The block is tagged with the name "Weekly Load Vector".</li></p>
+</p>
+    <li>There is a field named "times" with visibility "public" of type "int" and default value 0. This is an agent property. The block is tagged with the name "Times of Weekly Function".</li></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "createOperationVector" method has visibility     "public" has return type "Vector" and parameters [int times]. This is the step behavior. The block is tagged with the name "Create Operation Vector".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "createOperationVector" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "getProbability" method has visibility     "public" has return type "float" and parameters [String season, String day, int hour]. This is the step behavior. The block is tagged with the name "Start Time Probability".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "getProbability" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        float pseason = (float) probabilitySeason.get(season);</p>
+        float pday = (float) probabilityWeekday.get(day);</p>
+        float phour = (float) probabilityDaytime.get(hour);</p>
+         This is a task.</p>
+        returnValue = pseason pday phour</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "initialize" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Initialize".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "initialize" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "shiftingOperation" method has visibility     "public" has return type "Vector" and parameters [Vector v]. This is the step behavior. The block is tagged with the name "Shifting Operation".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "shiftingOperation" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillDay" method has visibility     "public" has return type "HashMap" and parameters [float sunday, float workingday, float saturday]. This is the step behavior. The block is tagged with the name "Fill Day HashMap".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillDay" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        HashMap hm = new HashMap();</p>
+        hm.put("Saturday", new Float(saturday));</p>
+        hm.put("Sunday", new Float(sunday));</p>
+         This is a task.</p>
+        hm.put("Monday", new Float(workingday));</p>
+        hm.put("Tuesday", new Float(workingday));</p>
+        hm.put("Wednesday", new Float(workingday));</p>
+        hm.put("Thursday", new Float(workingday));</p>
+        hm.put("Friday", new Float(workingday));</p>
+         This is a task.</p>
+        returnValue = hm</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillSeason" method has visibility     "public" has return type "HashMap" and parameters [float summer, float winter, float transition]. This is the step behavior. The block is tagged with the name "Fill Season HashMap".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillSeason" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        HashMap hm = new HashMap();</p>
+        hm.put("Winter", new Float(winter));</p>
+        hm.put("Transition", new Float(transition));</p>
+        hm.put("Summer", new Float(summer));</p>
+        returnValue = hm</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillHour" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Fill Hour HashMap".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillHour" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "showStatus" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Show Status".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "showStatus" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        System.out.println("Name = " + name)</p>
+        System.out.println("Member Of = " + getMemberOf().getName())</p>
+        System.out.println("Saturation = " + saturation)</p>
+        System.out.println("Consumption Share = " + consumptionShare)</p>
+        System.out.println("Base Load Share = " + baseLoadShare)</p>
+         This is a task.</p>
+        System.out.println("Power = " + power)</p>
+        System.out.println("Cycle Duration = "+ cycleDuration)</p>
+        System.out.println("Occupancy Dependence = "+ od)</p>
+        System.out.println("In Use = " + inUse)</p>
+         This is a task.</p>
+        Set set = probabilitySeason.entrySet();</p>
+        Iterator it = set.iterator();</p>
+        System.out.println("Probability Season = ")</p>
+</p>
+         This is a loop.</p>
+        while (it.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            Map.Entry me = (Map.Entry)it.next();</p>
+            System.out.println(me.getKey() + " : " + me.getValue() );</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        set = probabilityWeekday.entrySet();</p>
+        it = set.iterator();</p>
+        System.out.println("Probability Weekday = ")</p>
+</p>
+         This is a loop.</p>
+        while (it.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            Map.Entry me = (Map.Entry)it.next();</p>
+            System.out.println(me.getKey() + " : " + me.getValue() );</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Weekly Operation Vector = ")</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0; i < 7;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println("Day " + (i))</p>
+            ListIterator iter =operationVector.get(i).listIterator();</p>
+</p>
+             This is a loop.</p>
+            for (int j = 0;j < 96; j++) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                System.out.println("Quarter : " + (j+1) + "  " + iter.next())</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Weekly Operation Vector and Load = ")</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0; i < 7;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println("Day " + (i))</p>
+            ListIterator iter = weeklyOperation.get(i).listIterator();</p>
+            ListIterator iter2 = weeklyLoadVector.get(i).listIterator();</p>
+</p>
+             This is a loop.</p>
+            for (int j = 0;j < 96; j++) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                System.out.println("Quarter " + (j+1) + " = " + iter.next() + "   Load = " + iter2.next())</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillDailyFunction" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Fill Daily Function".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillDailyFunction" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "refresh" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Refresh".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "refresh" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent version="1" agentcomment="This is an agent." agentclassname="SemiShiftingAppliance" agentparentclassname="Appliance" agentinterfaces="" agentimports="java.util.Vector">
+  <behaviorsteps>
+    <behaviorstep x="407" y="22" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="Vector" compiledname="createDailyOperationVector" parameters="int weekday" exceptions="">
+      <label x="407" y="7" text="Create Daily Operation Vector"/>
+    </behaviorstep>
+    <behaviorstep x="658" y="-18" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="" compiledname="createWeeklyOperationVector" parameters="int times" exceptions="">
+      <label x="608" y="-35" text="Create Weekly Operation Vector"/>
+    </behaviorstep>
+    <behaviorstep x="122" y="60" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="" compiledname="fillWeeklyFunction" parameters="" exceptions="">
+      <label x="89" y="42" text="Fill Weekly Function"/>
+    </behaviorstep>
+    <behaviorstep x="1008" y="5" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="def" compiledname="fillDays" parameters="int times" exceptions="">
+      <label x="1008" y="-10" text="Fill Days Vector"/>
+    </behaviorstep>
+  </behaviorsteps>
+  <tasksteps>
+    <taskstep x="245" y="174" comment="This is a task." command1="fillDailyFunction(i)" command2="" command3="" command4="" command5="">
+      <label x="245" y="159" text="Fill Daily Function"/>
+    </taskstep>
+    <taskstep x="411" y="390" comment="This is a task." command1="int quarter = (int) RandomDraw(1,84)" command2="v.set(quarter-1,true)" command3="" command4="" command5="">
+      <label x="411" y="375" text="Choose a starting quarter"/>
+    </taskstep>
+    <taskstep x="546" y="211" comment="This is a task." command1="v.add(false)" command2="" command3="" command4="" command5="">
+      <label x="546" y="196" text="Fill Vector"/>
+    </taskstep>
+    <taskstep x="409" y="482" comment="This is a task." command1="returnValue = v" command2="" command3="" command4="" command5="">
+      <label x="409" y="467" text="Return Value"/>
+    </taskstep>
+    <taskstep x="765" y="229" comment="This is a task." command1="operationVector.add(createDailyOperationVector(i))" command2="" command3="" command4="" command5="">
+      <label x="765" y="214" text="Fill Weekly Operation Vector"/>
+    </taskstep>
+    <taskstep x="407" y="116" comment="This is a task." command1="Vector v = new Vector(96)" command2="" command3="" command4="" command5="">
+      <label x="407" y="101" text="Create new Vector"/>
+    </taskstep>
+    <taskstep x="914" y="325" comment="This is a task." command1="days.add(day)" command2="java.util.Collections.sort(days);" command3="" command4="" command5="">
+      <label x="900" y="307" text="Add Value to Vector"/>
+    </taskstep>
+    <taskstep x="914" y="509" comment="This is a task." command1="day = day + 1" command2="iter = days.listIterator();" command3="" command4="" command5="">
+      <label x="914" y="494" text="Pick next day"/>
+    </taskstep>
+    <taskstep x="1006" y="414" comment="This is a task." command1="int temp = (int)iter.next()" command2="" command3="" command4="" command5="">
+      <label x="1006" y="399" text="Numbering day"/>
+    </taskstep>
+    <taskstep x="1008" y="231" comment="This is a task." command1="int day = (int) (RandomDraw(0.0, 6.0))" command2="ListIterator iter = days.listIterator();" command3="" command4="" command5="">
+      <label x="982" y="215" text="Choose Random Day"/>
+    </taskstep>
+    <taskstep x="1129" y="145" comment="This is a task." command1="java.util.Collections.sort(days);" command2="ListIterator iter = days.listIterator();" command3="" command4="" command5="">
+      <label x="1129" y="130" text="Sort list of days"/>
+    </taskstep>
+    <taskstep x="657" y="78" comment="This is a task." command1="fillDays(times)" command2="" command3="" command4="" command5="">
+      <label x="657" y="63" text="Do Task"/>
+    </taskstep>
+    <taskstep x="301" y="442" comment="This is a task." command1="returnValue = v" command2="" command3="" command4="" command5="">
+      <label x="301" y="427" text="Return Value"/>
+    </taskstep>
+  </tasksteps>
+  <decisionsteps>
+    <decisionstep x="125" y="174" comment="This is a loop." criteria="int i = 0;i &lt; 7; i++" branchType="while">
+      <label x="125" y="159" text="For each day"/>
+    </decisionstep>
+    <decisionstep x="655" y="229" comment="This is a loop." criteria="int i=0;i &lt; 7;i++" branchType="while">
+      <label x="655" y="214" text="For each day"/>
+    </decisionstep>
+    <decisionstep x="404" y="212" comment="This is a loop." criteria="int i = 0;i &lt; 96;i++" branchType="while">
+      <label x="404" y="197" text="For each quarter"/>
+    </decisionstep>
+    <decisionstep x="1004" y="508" comment="This is an agent decision." criteria="day == temp" branchType="if">
+      <label x="1004" y="493" text="Day alread exists?"/>
+    </decisionstep>
+    <decisionstep x="1004" y="322" comment="This is a loop." criteria="iter.hasNext()" branchType="while">
+      <label x="1004" y="307" text="Untl list of days ends"/>
+    </decisionstep>
+    <decisionstep x="1008" y="142" comment="This is a loop." criteria="int i=0; i &lt; times; i++" branchType="while">
+      <label x="1008" y="127" text="For each operation time "/>
+    </decisionstep>
+    <decisionstep x="404" y="300" comment="This is an agent decision." criteria="days.contains(weekday) &amp;&amp; ((this instanceof Dryer) == false)" branchType="if">
+      <label x="395" y="289" text="Operate?"/>
+    </decisionstep>
+  </decisionsteps>
+  <joinsteps>
+    <joinstep x="383" y="617"/>
+  </joinsteps>
+  <agentproperties>
+    <agentproperty x="35" y="65" comment="This is an agent property." visibility="0" compiledname="days" type="Vector" defaultvalue="new Vector()">
+      <label x="40" y="50" text="Days"/>
+    </agentproperty>
+  </agentproperties>
+  <endsteps>
+    <endstep x="139" y="344"/>
+    <endstep x="387" y="715"/>
+    <endstep x="666" y="384"/>
+    <endstep x="1161" y="296"/>
+  </endsteps>
+  <connections>
+    <transitions>
+      <transition>
+        <transitionsource type="behavior" index="0" anchor="0"/>
+        <transitiontarget type="task" index="5" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="behavior" index="1" anchor="0"/>
+        <transitiontarget type="task" index="11" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="behavior" index="2" anchor="0"/>
+        <transitiontarget type="decision" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="behavior" index="3" anchor="0"/>
+        <transitiontarget type="decision" index="5" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="1" anchor="2"/>
+        <transitiontarget type="task" index="3" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="3" anchor="2"/>
+        <transitiontarget type="join" index="0" anchor="3"/>
+        <bendpoints>
+          <bendpoint x="435" y="616"/>
+        </bendpoints>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="5" anchor="2"/>
+        <transitiontarget type="decision" index="2" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="8" anchor="2"/>
+        <transitiontarget type="decision" index="3" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="9" anchor="2"/>
+        <transitiontarget type="decision" index="4" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="10" anchor="2"/>
+        <transitiontarget type="end" index="3" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="11" anchor="2"/>
+        <transitiontarget type="decision" index="1" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="12" anchor="2"/>
+        <transitiontarget type="join" index="0" anchor="1"/>
+        <bendpoints>
+          <bendpoint x="331" y="615"/>
+        </bendpoints>
+      </transition>
+      <transition>
+        <transitionsource type="join" index="0" anchor="2"/>
+        <transitiontarget type="end" index="1" anchor="0"/>
+        <bendpoints/>
+      </transition>
+    </transitions>
+    <booleantransitions>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="0" anchor="3"/>
+        <transitiontarget type="task" index="0" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="0" anchor="2"/>
+        <transitiontarget type="end" index="0" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="1" anchor="3"/>
+        <transitiontarget type="task" index="4" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="1" anchor="2"/>
+        <transitiontarget type="end" index="2" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="2" anchor="3"/>
+        <transitiontarget type="task" index="2" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="2" anchor="2"/>
+        <transitiontarget type="decision" index="6" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="3" anchor="1"/>
+        <transitiontarget type="task" index="7" anchor="3"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="4" anchor="2"/>
+        <transitiontarget type="task" index="8" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="4" anchor="1"/>
+        <transitiontarget type="task" index="6" anchor="3"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="5" anchor="2"/>
+        <transitiontarget type="task" index="9" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="5" anchor="3"/>
+        <transitiontarget type="task" index="10" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="6" anchor="2"/>
+        <transitiontarget type="task" index="1" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="6" anchor="1"/>
+        <transitiontarget type="task" index="12" anchor="0"/>
+        <bendpoints>
+          <bendpoint x="327" y="324"/>
+          <bendpoint x="326" y="400"/>
+        </bendpoints>
+      </booleantransition>
+    </booleantransitions>
+  </connections>
+</agent>

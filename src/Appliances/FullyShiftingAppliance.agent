@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent version="1" agentcomment="This is an agent." agentclassname="FullyShiftingAppliance" agentparentclassname="Appliance" agentinterfaces="" agentimports="java.util.Vector">
+  <behaviorsteps>
+    <behaviorstep x="138" y="43" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="" compiledname="fillWeeklyFunction" parameters="" exceptions="">
+      <label x="105" y="25" text="Fill Weekly Function"/>
+    </behaviorstep>
+    <behaviorstep x="647" y="47" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="" compiledname="createWeeklyOperationVector" parameters="int times" exceptions="">
+      <label x="597" y="30" text="Create Weekly Operation Vector"/>
+    </behaviorstep>
+    <behaviorstep x="388" y="16" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="Vector" compiledname="createDailyOperationVector" parameters="int times" exceptions="">
+      <label x="388" y="1" text="Create Daily Operation Vector"/>
+    </behaviorstep>
+  </behaviorsteps>
+  <tasksteps>
+    <taskstep x="261" y="157" comment="This is a task." command1="fillDailyFunction(i)" command2="" command3="" command4="" command5="">
+      <label x="261" y="142" text="Fill Daily Function"/>
+    </taskstep>
+    <taskstep x="761" y="158" comment="This is a task." command1="operationVector.add(createDailyOperationVector(times))" command2="" command3="" command4="" command5="">
+      <label x="761" y="143" text="Fill Weekly Operation Vector"/>
+    </taskstep>
+    <taskstep x="543" y="299" comment="This is a task." command1="int quarter = (int) RandomDraw(1,96)" command2="v.set(quarter-1,true)" command3="" command4="" command5="">
+      <label x="543" y="284" text="Choose random start quarter"/>
+    </taskstep>
+    <taskstep x="531" y="196" comment="This is a task." command1="v.add(false)" command2="" command3="" command4="" command5="">
+      <label x="531" y="181" text="Fill Daily Operation Vector"/>
+    </taskstep>
+    <taskstep x="391" y="377" comment="This is a task." command1="returnValue = v" command2="" command3="" command4="" command5="">
+      <label x="391" y="362" text="Return Value"/>
+    </taskstep>
+    <taskstep x="392" y="101" comment="This is a task." command1="Random rand = new Random()" command2="Vector v = new Vector(96)" command3="" command4="" command5="">
+      <label x="392" y="86" text="Create new vector"/>
+    </taskstep>
+  </tasksteps>
+  <decisionsteps>
+    <decisionstep x="141" y="157" comment="This is a loop." criteria="int i = 0;i &lt; 7; i++" branchType="while">
+      <label x="141" y="142" text="For each day"/>
+    </decisionstep>
+    <decisionstep x="648" y="158" comment="This is a loop." criteria="int i = 0;i &lt; 7; i++" branchType="while">
+      <label x="648" y="143" text="For each day"/>
+    </decisionstep>
+    <decisionstep x="389" y="197" comment="This is a loop." criteria="int i = 0;i &lt; 96;i++" branchType="while">
+      <label x="389" y="182" text="For each quarter"/>
+    </decisionstep>
+    <decisionstep x="388" y="291" comment="This is a loop." criteria="int i = 0;i &lt; times;i++" branchType="while">
+      <label x="388" y="276" text="For each time operates daily"/>
+    </decisionstep>
+  </decisionsteps>
+  <joinsteps/>
+  <agentproperties/>
+  <endsteps>
+    <endstep x="158" y="349"/>
+    <endstep x="682" y="350"/>
+    <endstep x="404" y="500"/>
+  </endsteps>
+  <connections>
+    <transitions>
+      <transition>
+        <transitionsource type="behavior" index="0" anchor="0"/>
+        <transitiontarget type="decision" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="behavior" index="1" anchor="0"/>
+        <transitiontarget type="decision" index="1" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="behavior" index="2" anchor="0"/>
+        <transitiontarget type="task" index="5" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="4" anchor="2"/>
+        <transitiontarget type="end" index="2" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="5" anchor="2"/>
+        <transitiontarget type="decision" index="2" anchor="0"/>
+        <bendpoints/>
+      </transition>
+    </transitions>
+    <booleantransitions>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="0" anchor="3"/>
+        <transitiontarget type="task" index="0" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="0" anchor="2"/>
+        <transitiontarget type="end" index="0" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="1" anchor="3"/>
+        <transitiontarget type="task" index="1" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="1" anchor="2"/>
+        <transitiontarget type="end" index="1" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="2" anchor="3"/>
+        <transitiontarget type="task" index="3" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="2" anchor="2"/>
+        <transitiontarget type="decision" index="3" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="3" anchor="3"/>
+        <transitiontarget type="task" index="2" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="3" anchor="2"/>
+        <transitiontarget type="task" index="4" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+    </booleantransitions>
+  </connections>
+</agent>

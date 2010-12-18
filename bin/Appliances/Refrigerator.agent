@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent version="1" agentcomment="This is an agent." agentclassname="Refrigerator" agentparentclassname="FullyShiftingAppliance" agentinterfaces="" agentimports="">
+  <behaviorsteps>
+    <behaviorstep x="561" y="25" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="def" compiledname="initialize" parameters="HashMap hm" exceptions="">
+      <label x="565" y="10" text="Initialize"/>
+    </behaviorstep>
+    <behaviorstep x="52" y="20" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="def" compiledname="fillDailyFunction" parameters="int weekday" exceptions="">
+      <label x="36" y="5" text="Fill Daily Function"/>
+    </behaviorstep>
+    <behaviorstep x="445" y="26" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="def" compiledname="refresh" parameters="" exceptions="">
+      <label x="445" y="11" text="Refresh"/>
+    </behaviorstep>
+  </behaviorsteps>
+  <tasksteps>
+    <taskstep x="561" y="113" comment="This is a task." command1="name = &quot;Refrigerator&quot;" command2="saturation =  (float)hm.get(&quot;RefrigeratorSaturation&quot;)" command3="Random rand = new Random()" command4="" command5="">
+      <label x="561" y="98" text="Set basic attributes"/>
+    </taskstep>
+    <taskstep x="562" y="302" comment="This is a task." command1="inUse = false" command2="probabilitySeason = fillSeason(35,30,35)" command3="probabilityWeekday = fillDay(14,14,16)" command4="" command5="">
+      <label x="562" y="287" text="Set basic attributes"/>
+    </taskstep>
+    <taskstep x="562" y="206" comment="This is a task." command1="consumptionShare = (float) (0.01 * (1.5 * rand.nextGaussian() + 9))" command2="baseLoadShare = 0" command3="power = (int) (23 * rand.nextGaussian() + 140)" command4="cycleDuration = 1" command5="od = false">
+      <label x="562" y="191" text="Set basic attributes"/>
+    </taskstep>
+    <taskstep x="364" y="186" comment="This is a task." command1="loadVector.add(power)" command2="dailyOperation.add(true)" command3="" command4="" command5="">
+      <label x="283" y="240" text="Set operation and load vector accordingly"/>
+    </taskstep>
+    <taskstep x="209" y="276" comment="This is a task." command1="loadVector.add(0)" command2="dailyOperation.add(false)" command3="" command4="" command5="">
+      <label x="162" y="335" text="Set operation and load vector accordingly"/>
+    </taskstep>
+    <taskstep x="54" y="92" comment="This is a task." command1="loadVector = new Vector()" command2="dailyOperation = new Vector()" command3="" command4="" command5="">
+      <label x="54" y="77" text="Create new Vectors"/>
+    </taskstep>
+    <taskstep x="51" y="277" comment="This is a task." command1="weeklyLoadVector.add(loadVector)" command2="weeklyOperation.add(dailyOperation)" command3="operationVector.add(dailyOperation)" command4="" command5="">
+      <label x="51" y="262" text="Set values on vectors"/>
+    </taskstep>
+    <taskstep x="445" y="149" comment="This is a task." command1="fillWeeklyFunction()" command2="System.out.println(&quot;Refridgerator refreshed&quot;)" command3="" command4="" command5="">
+      <label x="445" y="134" text="Refill Weekly Function"/>
+    </taskstep>
+  </tasksteps>
+  <decisionsteps>
+    <decisionstep x="52" y="187" comment="This is a loop." criteria="int i = 0;i &lt; 96;i++" branchType="while">
+      <label x="52" y="172" text="For each quarter"/>
+    </decisionstep>
+    <decisionstep x="210" y="185" comment="This is an agent decision." criteria="i % 2 == 0" branchType="if">
+      <label x="210" y="170" text="i % 2 == 0?"/>
+    </decisionstep>
+  </decisionsteps>
+  <joinsteps/>
+  <agentproperties/>
+  <endsteps>
+    <endstep x="591" y="460"/>
+    <endstep x="73" y="388"/>
+    <endstep x="463" y="323"/>
+  </endsteps>
+  <connections>
+    <transitions>
+      <transition>
+        <transitionsource type="behavior" index="0" anchor="0"/>
+        <transitiontarget type="task" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="behavior" index="1" anchor="0"/>
+        <transitiontarget type="task" index="5" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="behavior" index="2" anchor="0"/>
+        <transitiontarget type="task" index="7" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="0" anchor="2"/>
+        <transitiontarget type="task" index="2" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="1" anchor="2"/>
+        <transitiontarget type="end" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="2" anchor="2"/>
+        <transitiontarget type="task" index="1" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="5" anchor="2"/>
+        <transitiontarget type="decision" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="6" anchor="2"/>
+        <transitiontarget type="end" index="1" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="7" anchor="2"/>
+        <transitiontarget type="end" index="2" anchor="0"/>
+        <bendpoints/>
+      </transition>
+    </transitions>
+    <booleantransitions>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="0" anchor="3"/>
+        <transitiontarget type="decision" index="1" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="0" anchor="2"/>
+        <transitiontarget type="task" index="6" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="1" anchor="3"/>
+        <transitiontarget type="task" index="3" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="1" anchor="2"/>
+        <transitiontarget type="task" index="4" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+    </booleantransitions>
+  </connections>
+</agent>

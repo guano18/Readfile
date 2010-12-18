@@ -1,0 +1,133 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>FullyShiftingAppliance.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">FullyShiftingAppliance.agent</P></HEAD><IMG SRC=images/Appliances.FullyShiftingAppliance.png border=1 alt="Flowchart for FullyShiftingAppliance.agent" title="Flowchart for FullyShiftingAppliance.agent"></P>The package name is "Appliances".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+<li>Components from java.util.Vector</li></p>
+</BLOCKQUOTE><P></p>
+The class "FullyShiftingAppliance" is defined with visibility "public" which extends parent class "Appliance" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillWeeklyFunction" method has visibility     "public". This is the step behavior. The block is tagged with the name "Fill Weekly Function".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillWeeklyFunction" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0;i < 7; i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            fillDailyFunction(i)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "createWeeklyOperationVector" method has visibility     "public" and parameters [int times]. This is the step behavior. The block is tagged with the name "Create Weekly Operation Vector".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "createWeeklyOperationVector" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0;i < 7; i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            operationVector.add(createDailyOperationVector(times))</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "createDailyOperationVector" method has visibility     "public" has return type "Vector" and parameters [int times]. This is the step behavior. The block is tagged with the name "Create Daily Operation Vector".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "createDailyOperationVector" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        Random rand = new Random()</p>
+        Vector v = new Vector(96)</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0;i < 96;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            v.add(false)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0;i < times;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            int quarter = (int) RandomDraw(1,96)</p>
+            v.set(quarter-1,true)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        returnValue = v</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>

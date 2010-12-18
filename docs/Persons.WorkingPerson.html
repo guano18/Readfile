@@ -1,0 +1,458 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>WorkingPerson.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">WorkingPerson.agent</P></HEAD><IMG SRC=images/Persons.WorkingPerson.png border=1 alt="Flowchart for WorkingPerson.agent" title="Flowchart for WorkingPerson.agent"></P>The package name is "Persons".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+<li>Components from java.util.Vector</li></p>
+</BLOCKQUOTE><P></p>
+The class "WorkingPerson" is defined with visibility "public" which extends parent class "Person" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    <li>There is a field named "workingDays" with visibility "public" of type "Vector" and default value null. This is an agent property. The block is tagged with the name "Working Days".</li></p>
+</p>
+    <li>There is a field named "workingDuration" with visibility "public" of type "int" and default value 0. This is an agent property. The block is tagged with the name "Working Duration".</li></p>
+</p>
+    <li>There is a field named "vacationDuration" with visibility "public" of type "int" and default value 0. This is an agent property. The block is tagged with the name "Vacation Duration".</li></p>
+</p>
+    <li>There is a field named "vacationVector" with visibility "public" of type "Vector" and default value null. This is an agent property. The block is tagged with the name "Vacation Vector".</li></p>
+</p>
+    <li>There is a field named "workingStartHour" with visibility "public" of type "int" and default value 0. This is an agent property. The block is tagged with the name "Working Start Hour".</li></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "initialize" method has visibility     "public" and parameters [String AgentName]. This is the step behavior. The block is tagged with the name "Initialize agent".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "initialize" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         This is a task.</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "createWorkingDaysVector" method has visibility     "public" has return type "Vector" and parameters [int days]. This is the step behavior. The block is tagged with the name "Create Working Vector".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "createWorkingDaysVector" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        Vector v = new Vector(days)</p>
+</p>
+         This is an agent decision.</p>
+        if (days < 5) <BLOCKQUOTE></p>
+</p>
+</p>
+             This is a loop.</p>
+            for (int i = 0; i < days; i++) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                int x = (int) (RandomDraw() 4 + 1)</p>
+                ListIterator iter = v.listIterator();</p>
+</p>
+                 This is a loop.</p>
+                while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    int temp = (int)iter.next()</p>
+</p>
+                     This is an agent decision.</p>
+                    if (x == temp) <BLOCKQUOTE></p>
+</p>
+                         This is a task.</p>
+                        x = x + 1</p>
+                        iter = v.listIterator();</p>
+</p>
+                    </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                    </BLOCKQUOTE></p>
+</p>
+                </BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                v.add(x)</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            java.util.Collections.sort(v);</p>
+            returnValue = v</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            v.add(1)</p>
+            v.add(2)</p>
+            v.add(3)</p>
+            v.add(4)</p>
+            v.add(5)</p>
+</p>
+             This is an agent decision.</p>
+            if (days == 5) <BLOCKQUOTE></p>
+</p>
+</p>
+            </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                 This is an agent decision.</p>
+                if (days == 7) <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    v.add(6)</p>
+                    v.add(0)</p>
+</p>
+                </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                     This is an agent decision.</p>
+                    if (RandomDrawAgainstThreshold(0.5)) <BLOCKQUOTE></p>
+</p>
+                         This is a task.</p>
+                        v.add(6)</p>
+</p>
+                    </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                         This is a task.</p>
+                        v.add(0)</p>
+</p>
+                    </BLOCKQUOTE></p>
+</p>
+                </BLOCKQUOTE></p>
+</p>
+            </BLOCKQUOTE></p>
+             This is a task.</p>
+            java.util.Collections.sort(v);</p>
+            returnValue = v</p>
+</p>
+        </BLOCKQUOTE></p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "createVacationVector" method has visibility     "public" has return type "Vector" and parameters [int duration]. This is the step behavior. The block is tagged with the name "Create Vacation Vector".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "createVacationVector" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        Vector v = new Vector(duration)</p>
+        int counter = duration</p>
+        int counter2 = 0</p>
+</p>
+         This is a loop.</p>
+        while (counter > 0) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            int x = (int) (RandomDraw(0.0,364.0) + 1)</p>
+            counter2 = (int)(RandomDraw(1.0,counter))</p>
+            ListIterator iter = v.listIterator()</p>
+</p>
+             This is a loop.</p>
+            while (counter2 > 0) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                v.add(x)</p>
+                counter = counter - 1</p>
+                counter2 = counter2 - 1</p>
+                x = x + 1</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        java.util.Collections.sort(v);</p>
+        returnValue = v</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "workingDaysRandomizer" method has visibility     "public" has return type "int" and parameters [HashMap hm]. This is the step behavior. The block is tagged with the name "Working Days Randomizer".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "workingDaysRandomizer" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        int oneDay = ((int)hm.get("OneDay"))</p>
+        int twoDays = ((int)hm.get("TwoDays"))</p>
+        int threeDays = ((int)hm.get("ThreeDays"))</p>
+        int fourDays = ((int)hm.get("FourDays"))</p>
+        int fiveDays = ((int)hm.get("FiveDays"))</p>
+         This is a task.</p>
+        int sixDays = ((int)hm.get("SixDays"))</p>
+        int sevenDays = ((int)hm.get("SevenDays"))</p>
+        int x = (int) RandomDraw(0.0,100.0)</p>
+</p>
+         This is an agent decision.</p>
+        if (x < fiveDays) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            returnValue = 5</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+             This is an agent decision.</p>
+            if (x >= fiveDays & x < (fiveDays + sixDays)) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                returnValue = 6</p>
+</p>
+            </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                 This is an agent decision.</p>
+                if (x >= (fiveDays + sixDays) & x < (fiveDays + sixDays + fourDays)) <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    returnValue = 4</p>
+</p>
+                </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                     This is an agent decision.</p>
+                    if (x >= (fiveDays + sixDays + fourDays) & x < (fiveDays + sixDays + fourDays + threeDays)) <BLOCKQUOTE></p>
+</p>
+                         This is a task.</p>
+                        returnValue = 3</p>
+</p>
+                    </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                         This is an agent decision.</p>
+                        if (x >= (fiveDays + sixDays + fourDays + threeDays) & x < (fiveDays + sixDays + fourDays + threeDays+twoDays)) <BLOCKQUOTE></p>
+</p>
+                             This is a task.</p>
+                            returnValue = 2</p>
+</p>
+                        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                             This is an agent decision.</p>
+                            if (x >= (fiveDays + sixDays + fourDays + threeDays+twoDays) & x < (fiveDays + sixDays + fourDays + threeDays+twoDays+sevenDays)) <BLOCKQUOTE></p>
+</p>
+                                 This is a task.</p>
+                                returnValue  = 7</p>
+</p>
+                            </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                                 This is a task.</p>
+                                returnValue = 1</p>
+</p>
+                            </BLOCKQUOTE></p>
+</p>
+                        </BLOCKQUOTE></p>
+</p>
+                    </BLOCKQUOTE></p>
+</p>
+                </BLOCKQUOTE></p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+        </BLOCKQUOTE></p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "showStatus" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Show Status".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "showStatus" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        System.out.println("Name = " + name)</p>
+        System.out.println("Member Of = " + getMemberOf().getName())</p>
+        System.out.println("Sickness Days = ")</p>
+        ListIterator iter = sicknessVector.listIterator();</p>
+</p>
+         This is a loop.</p>
+        while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println(iter.next());</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Leisure Days of Week = ");</p>
+        iter = leisureVector.listIterator();</p>
+</p>
+         This is a loop.</p>
+        while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println(iter.next());</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Leisure Duration = " + leisureDuration);</p>
+        System.out.println("Working Days = ");</p>
+        iter = workingDays.listIterator();</p>
+</p>
+         This is a loop.</p>
+        while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println(iter.next());</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Working Duration = " + workingDuration);</p>
+        System.out.println("Working Starting Hour = " + workingStartHour)</p>
+        System.out.println("Vacation Duration = " + vacationDuration);</p>
+        System.out.println("Vacation Days = ");</p>
+        iter = vacationVector.listIterator();</p>
+</p>
+         This is a loop.</p>
+        while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println(iter.next());</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Public Vacation of Year = ");</p>
+        iter = pVacationVector.listIterator();</p>
+</p>
+         This is a loop.</p>
+        while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println(iter.next());</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Weekly Routine : ")</p>
+        iter = weeklyRoutine.get(0).listIterator();</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0; i < 7;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println("Day " + (i))</p>
+            iter = weeklyRoutine.get(i).listIterator();</p>
+</p>
+             This is a loop.</p>
+            for (int j =0;j < 96;j++) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                System.out.println("Quarter : " + (j+1) + " Status : " + iter.next())</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillWork" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Fill Work Day".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillWork" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>

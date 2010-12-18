@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent version="1" agentcomment="This is an agent." agentclassname="PeriodicPresentPerson" agentparentclassname="WorkingPerson" agentinterfaces="" agentimports="java.util.Vector">
+  <behaviorsteps>
+    <behaviorstep x="134" y="9" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="" compiledname="initialize" parameters="String AgentName, HashMap hm, Vector publicVacationVector" exceptions="">
+      <label x="142" y="-7" text="Initialize"/>
+    </behaviorstep>
+    <behaviorstep x="661" y="6" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="def" compiledname="addLeisureWorking" parameters="int weekday" exceptions="">
+      <label x="629" y="-9" text="Add Leisure To Routine"/>
+    </behaviorstep>
+    <behaviorstep x="686" y="390" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="def" compiledname="fillWork" parameters="" exceptions="">
+      <label x="686" y="375" text="Fill Work"/>
+    </behaviorstep>
+    <behaviorstep x="532" y="8" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="def" compiledname="refresh" parameters="HashMap hm" exceptions="">
+      <label x="532" y="-7" text="Refresh"/>
+    </behaviorstep>
+  </behaviorsteps>
+  <tasksteps>
+    <taskstep x="131" y="422" comment="This is a task." command1="leisureDuration = (int) (leisureDurationDev * rand.nextGaussian() + leisureDurationMean)" command2="" command3="" command4="" command5="">
+      <label x="8" y="434" text="Assign Leisure Duration"/>
+    </taskstep>
+    <taskstep x="309" y="159" comment="This is a task." command1="int workingDurationMean = ((int)hm.get(&quot;WorkingDurationMean&quot;))" command2="int workingDurationDev = ((int)hm.get(&quot;WorkingDurationDev&quot;))" command3="workingDuration = (int) (workingDurationDev * rand.nextGaussian() + workingDurationMean)" command4="" command5="">
+      <label x="360" y="173" text="Assign Work Duration"/>
+    </taskstep>
+    <taskstep x="130" y="184" comment="This is a task." command1="name = AgentName" command2="status = Status.Normal" command3="" command4="" command5="">
+      <label x="62" y="201" text="Name Agent"/>
+    </taskstep>
+    <taskstep x="129" y="262" comment="This is a task." command1="sicknessVector = createSicknessVector(sicknessMean,sicknessDev)" command2="pVacationVector = publicVacationVector" command3="" command4="" command5="">
+      <label x="10" y="276" text="Assign Sickness Vector"/>
+    </taskstep>
+    <taskstep x="309" y="254" comment="This is a task." command1="int vacationDurationMean = ((int)hm.get(&quot;VacationDurationMean&quot;))" command2="int vacationDurationDev = ((int)hm.get(&quot;VacationDurationDev&quot;))" command3="vacationDuration = (int) (vacationDurationDev * rand.nextGaussian() + vacationDurationMean)" command4="" command5="">
+      <label x="355" y="273" text="Assign Vacation Duration"/>
+    </taskstep>
+    <taskstep x="304" y="37" comment="This is a task." command1="workingStartHour = 29" command2="int work = workingDaysRandomizer(hm)" command3="workingDays = createWorkingDaysVector(work)" command4="" command5="">
+      <label x="304" y="22" text="Assign Work Vector"/>
+    </taskstep>
+    <taskstep x="131" y="340" comment="This is a task." command1="Random rand = new Random();" command2="int x = (int) (rand.nextGaussian() + PPLeisure)" command3="leisureVector = createLeisureVector(x)" command4="" command5="">
+      <label x="-1" y="351" text="Assign Leisure Day Vector"/>
+    </taskstep>
+    <taskstep x="316" y="349" comment="This is a task." command1="vacationVector = createVacationVector(vacationDuration)" command2="" command3="" command4="" command5="">
+      <label x="368" y="364" text="Assign Vacation Vector"/>
+    </taskstep>
+    <taskstep x="663" y="83" comment="This is a task." command1="ListIterator iter = leisureVector.listIterator();" command2="Status st" command3="" command4="" command5="">
+      <label x="663" y="68" text="Create variables"/>
+    </taskstep>
+    <taskstep x="1003" y="265" comment="This is a task." command1="st = Status.Leisure" command2="dailyRoutine.set(i-1,st)" command3="" command4="" command5="">
+      <label x="1003" y="250" text="Set Leisure Time"/>
+    </taskstep>
+    <taskstep x="911" y="169" comment="This is a task." command1="int start = workingStartHour + workingDuration" command2="int startq = RandomDraw(start,75)" command3="" command4="" command5="">
+      <label x="911" y="154" text="Assign start leisure quarter"/>
+    </taskstep>
+    <taskstep x="803" y="549" comment="This is a task." command1="st = Status.Working" command2="dailyRoutine.set(i-1,st)" command3="" command4="" command5="">
+      <label x="803" y="534" text="Set Working Time"/>
+    </taskstep>
+    <taskstep x="690" y="463" comment="This is a task." command1="Status st" command2="" command3="" command4="" command5="">
+      <label x="690" y="448" text="Create variables"/>
+    </taskstep>
+    <taskstep x="534" y="205" comment="This is a task." command1="Random rand = new Random();" command2="int x = (int) (rand.nextGaussian() + PPLeisure)" command3="leisureDuration = (int) (leisureDurationDev * rand.nextGaussian() + leisureDurationMean)" command4="leisureVector = createLeisureVector(x)" command5="weeklyRoutine = fillWeeklyRoutine(vacationAbsence)">
+      <label x="495" y="186" text="Assign Leisure Day Vector"/>
+    </taskstep>
+    <taskstep x="130" y="100" comment="This is a task." command1="float sicknessMean = ((float)hm.get(&quot;SicknessMean&quot;))" command2="float sicknessDev = ((float)hm.get(&quot;SicknessDev&quot;))" command3="float leisureDurationMean = ((int)hm.get(&quot;LeisureDurationMean&quot;))" command4="float leisureDurationDev = ((int)hm.get(&quot;LeisureDurationDev&quot;))" command5="float PPLeisure = ((int)hm.get(&quot;PPLeisure&quot;))">
+      <label x="117" y="86" text="Get values from config file"/>
+    </taskstep>
+    <taskstep x="531" y="106" comment="This is a task." command1="float leisureDurationMean = ((int)hm.get(&quot;LeisureDurationMean&quot;))" command2="float leisureDurationDev = ((int)hm.get(&quot;LeisureDurationDev&quot;))" command3="float PPLeisure = ((int)hm.get(&quot;PPLeisure&quot;))" command4="float vacationAbsence = ((float)hm.get(&quot;VacationAbsence&quot;))" command5="">
+      <label x="501" y="93" text="Get values from config file"/>
+    </taskstep>
+  </tasksteps>
+  <decisionsteps>
+    <decisionstep x="664" y="167" comment="This is a loop." criteria="iter.hasNext()" branchType="while">
+      <label x="620" y="148" text="Until the end leisure days vector"/>
+    </decisionstep>
+    <decisionstep x="795" y="170" comment="This is an agent decision." criteria="iter.next() == weekday" branchType="if">
+      <label x="757" y="224" text="Is weekday a leisure day?"/>
+    </decisionstep>
+    <decisionstep x="911" y="266" comment="This is a loop." criteria="int i = startq;i &lt; startq +leisureDuration;i++" branchType="while">
+      <label x="844" y="249" text="For the duration of leisure"/>
+    </decisionstep>
+    <decisionstep x="687" y="553" comment="This is a loop." criteria="int i = workingStartHour;i &lt; workingStartHour + workingDuration;i++" branchType="while">
+      <label x="564" y="547" text="For the duration of work"/>
+    </decisionstep>
+  </decisionsteps>
+  <joinsteps/>
+  <agentproperties/>
+  <endsteps>
+    <endstep x="326" y="455"/>
+    <endstep x="677" y="310"/>
+    <endstep x="697" y="694"/>
+    <endstep x="544" y="320"/>
+  </endsteps>
+  <connections>
+    <transitions>
+      <transition>
+        <transitionsource type="behavior" index="0" anchor="0"/>
+        <transitiontarget type="task" index="14" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="behavior" index="1" anchor="0"/>
+        <transitiontarget type="task" index="8" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="behavior" index="2" anchor="0"/>
+        <transitiontarget type="task" index="12" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="behavior" index="3" anchor="0"/>
+        <transitiontarget type="task" index="15" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="0" anchor="3"/>
+        <transitiontarget type="task" index="5" anchor="1"/>
+        <bendpoints>
+          <bendpoint x="249" y="448"/>
+          <bendpoint x="252" y="63"/>
+        </bendpoints>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="1" anchor="2"/>
+        <transitiontarget type="task" index="4" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="2" anchor="2"/>
+        <transitiontarget type="task" index="3" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="3" anchor="2"/>
+        <transitiontarget type="task" index="6" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="4" anchor="2"/>
+        <transitiontarget type="task" index="7" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="5" anchor="2"/>
+        <transitiontarget type="task" index="1" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="6" anchor="2"/>
+        <transitiontarget type="task" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="7" anchor="2"/>
+        <transitiontarget type="end" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="8" anchor="2"/>
+        <transitiontarget type="decision" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="10" anchor="2"/>
+        <transitiontarget type="decision" index="2" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="12" anchor="2"/>
+        <transitiontarget type="decision" index="3" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="13" anchor="2"/>
+        <transitiontarget type="end" index="3" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="14" anchor="2"/>
+        <transitiontarget type="task" index="2" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="15" anchor="2"/>
+        <transitiontarget type="task" index="13" anchor="0"/>
+        <bendpoints/>
+      </transition>
+    </transitions>
+    <booleantransitions>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="0" anchor="3"/>
+        <transitiontarget type="decision" index="1" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="0" anchor="2"/>
+        <transitiontarget type="end" index="1" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="1" anchor="3"/>
+        <transitiontarget type="task" index="10" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="2" anchor="3"/>
+        <transitiontarget type="task" index="9" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="3" anchor="3"/>
+        <transitiontarget type="task" index="11" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="3" anchor="2"/>
+        <transitiontarget type="end" index="2" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+    </booleantransitions>
+  </connections>
+</agent>

@@ -1,0 +1,207 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>PeriodicPresentPerson.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">PeriodicPresentPerson.agent</P></HEAD>The package name is "bin.Persons".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+<li>Components from java.util.Vector</li></p>
+</BLOCKQUOTE><P></p>
+The class "PeriodicPresentPerson" is defined with visibility "public" which extends parent class "WorkingPerson" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "initialize" method has visibility     "public" and parameters [String AgentName, HashMap hm, Vector publicVacationVector]. This is the step behavior. The block is tagged with the name "Initialize".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "initialize" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         This is a task.</p>
+        float sicknessMean = ((float)hm.get("SicknessMean"))</p>
+        float sicknessDev = ((float)hm.get("SicknessDev"))</p>
+        float leisureDurationMean = ((int)hm.get("LeisureDurationMean"))</p>
+        float leisureDurationDev = ((int)hm.get("LeisureDurationDev"))</p>
+        float PPLeisure = ((int)hm.get("PPLeisure"))</p>
+         This is a task.</p>
+        name = AgentName</p>
+        status = Status.Normal</p>
+         This is a task.</p>
+        sicknessVector = createSicknessVector(sicknessMean,sicknessDev)</p>
+        pVacationVector = publicVacationVector</p>
+         This is a task.</p>
+        Random rand = new Random();</p>
+        int x = (int) (rand.nextGaussian() + PPLeisure)</p>
+        leisureVector = createLeisureVector(x)</p>
+         This is a task.</p>
+        leisureDuration = (int) (leisureDurationDev rand.nextGaussian() + leisureDurationMean)</p>
+         This is a task.</p>
+        workingStartHour = 29</p>
+        int work = workingDaysRandomizer(hm)</p>
+        workingDays = createWorkingDaysVector(work)</p>
+         This is a task.</p>
+        int workingDurationMean = ((int)hm.get("WorkingDurationMean"))</p>
+        int workingDurationDev = ((int)hm.get("WorkingDurationDev"))</p>
+        workingDuration = (int) (workingDurationDev rand.nextGaussian() + workingDurationMean)</p>
+         This is a task.</p>
+        int vacationDurationMean = ((int)hm.get("VacationDurationMean"))</p>
+        int vacationDurationDev = ((int)hm.get("VacationDurationDev"))</p>
+        vacationDuration = (int) (vacationDurationDev rand.nextGaussian() + vacationDurationMean)</p>
+         This is a task.</p>
+        vacationVector = createVacationVector(vacationDuration)</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "addLeisureWorking" method has visibility     "public" has return type "def" and parameters [int weekday]. This is the step behavior. The block is tagged with the name "Add Leisure To Routine".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "addLeisureWorking" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        ListIterator iter = leisureVector.listIterator();</p>
+        Status st</p>
+</p>
+         This is a loop.</p>
+        while (iter.hasNext()) <BLOCKQUOTE></p>
+</p>
+</p>
+             This is an agent decision.</p>
+            if (iter.next() == weekday) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                int start = workingStartHour + workingDuration</p>
+                int startq = RandomDraw(start,75)</p>
+</p>
+                 This is a loop.</p>
+                for (int i = startq;i < startq +leisureDuration;i++) <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    st = Status.Leisure</p>
+                    dailyRoutine.set(i-1,st)</p>
+</p>
+                </BLOCKQUOTE></p>
+</p>
+</p>
+            </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillWork" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Fill Work".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillWork" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        Status st</p>
+</p>
+         This is a loop.</p>
+        for (int i = workingStartHour;i < workingStartHour + workingDuration;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            st = Status.Working</p>
+            dailyRoutine.set(i-1,st)</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "refresh" method has visibility     "public" has return type "def" and parameters [HashMap hm]. This is the step behavior. The block is tagged with the name "Refresh".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "refresh" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        float leisureDurationMean = ((int)hm.get("LeisureDurationMean"))</p>
+        float leisureDurationDev = ((int)hm.get("LeisureDurationDev"))</p>
+        float PPLeisure = ((int)hm.get("PPLeisure"))</p>
+        float vacationAbsence = ((float)hm.get("VacationAbsence"))</p>
+         This is a task.</p>
+        Random rand = new Random();</p>
+        int x = (int) (rand.nextGaussian() + PPLeisure)</p>
+        leisureDuration = (int) (leisureDurationDev rand.nextGaussian() + leisureDurationMean)</p>
+        leisureVector = createLeisureVector(x)</p>
+        weeklyRoutine = fillWeeklyRoutine(vacationAbsence)</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>

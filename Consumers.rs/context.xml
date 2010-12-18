@@ -1,0 +1,8 @@
+<context id="Consumers" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://repast.org/scenario/context">
+	<projection type="grid" id="grid">
+		<attribute type="int" value="30" id="width" /><attribute
+			type="int" value="20" id="height" /><attribute type="string"
+			value="periodic" id="border rule" ></attribute>
+		<attribute type="boolean" value="true" id="allows multi" /></projection>
+
+</context>

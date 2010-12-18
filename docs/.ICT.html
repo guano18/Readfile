@@ -1,0 +1,203 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>ICT.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">ICT.agent</P></HEAD>The package name is "bin.Appliances".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+</BLOCKQUOTE><P></p>
+The class "ICT" is defined with visibility "public" which extends parent class "NotShiftingAppliance" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "initialize" method has visibility     "public" has return type "def" and parameters [HashMap hm]. This is the step behavior. The block is tagged with the name "Initialize".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "initialize" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        name = "ICT"</p>
+        saturation = (float)hm.get("ICTSaturation")</p>
+        Random rand = new Random()</p>
+         Set basic attributes</p>
+        consumptionShare = (float) (0.01 (0.8 rand.nextGaussian() + 5))</p>
+        baseLoadShare =0.6</p>
+        power = (int) (25 rand.nextGaussian() + 150)</p>
+        cycleDuration = 1</p>
+        times = (float)hm.get("ICTDailyTimes")</p>
+         This is a task.</p>
+        od = true</p>
+        inUse = false</p>
+        probabilitySeason = fillSeason(25,38,37)</p>
+        probabilityWeekday = fillDay(14,14,16)</p>
+        createWeeklyOperationVector(cycleDuration + getMemberOf().members.size())</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillDailyFunction" method has visibility     "public" has return type "def" and parameters [int weekday]. This is the step behavior. The block is tagged with the name "Fill Daily Function".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillDailyFunction" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        loadVector = new Vector()</p>
+        dailyOperation = new Vector()</p>
+        Vector operation = operationVector.get(weekday)</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0;i < 96;i++) <BLOCKQUOTE></p>
+</p>
+</p>
+             This is an agent decision.</p>
+            if (operation.get(i) == true) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                boolean flag = true</p>
+                int counter = 0</p>
+</p>
+                 This is a loop.</p>
+                while ((flag) && (i < 96) && (counter >= 0)) <BLOCKQUOTE></p>
+</p>
+</p>
+                     This is an agent decision.</p>
+                    if (getMemberOf().isEmpty(i+1) == false) <BLOCKQUOTE></p>
+</p>
+                         This is a task.</p>
+                        loadVector.add(power)</p>
+                        dailyOperation.add(true)</p>
+                        counter--</p>
+</p>
+                         This is an agent decision.</p>
+                        if (counter < 0) <BLOCKQUOTE></p>
+</p>
+                             This is a task.</p>
+                            flag = false</p>
+</p>
+                        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                        </BLOCKQUOTE></p>
+</p>
+                    </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                         This is a task.</p>
+                        loadVector.add(0)</p>
+                        dailyOperation.add(false)</p>
+                        i++</p>
+</p>
+                         This is an agent decision.</p>
+                        if (i < 96 && operation.get(i) == true) <BLOCKQUOTE></p>
+</p>
+                             This is a task.</p>
+                            counter++</p>
+</p>
+                        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                        </BLOCKQUOTE></p>
+</p>
+                    </BLOCKQUOTE></p>
+</p>
+                </BLOCKQUOTE></p>
+</p>
+</p>
+            </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                loadVector.add(0)</p>
+                dailyOperation.add(false)</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        weeklyLoadVector.add(loadVector)</p>
+        weeklyOperation.add(dailyOperation)</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "refresh" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Refresh".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "refresh" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        createWeeklyOperationVector(times + getMemberOf().members.size())</p>
+        fillWeeklyFunction()</p>
+        System.out.println("ICT refreshed")</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>

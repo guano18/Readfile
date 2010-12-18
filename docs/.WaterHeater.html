@@ -1,0 +1,408 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>WaterHeater.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">WaterHeater.agent</P></HEAD>The package name is "bin.Appliances".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+</BLOCKQUOTE><P></p>
+The class "WaterHeater" is defined with visibility "public" which extends parent class "FullyShiftingAppliance" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    <li>There is a field named "type" with visibility "public" of type "HeaterType" and default value null. This is an agent property. The block is tagged with the name "Heater Type".</li></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "fillDailyFunction" method has visibility     "public" has return type "def" and parameters [int weekday]. This is the step behavior. The block is tagged with the name "Fill Daily Function".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "fillDailyFunction" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        int start = 0</p>
+        int temp = 0</p>
+        loadVector = new Vector()</p>
+        dailyOperation = new Vector()</p>
+        Vector operation = new Vector()</p>
+</p>
+         This is an agent decision.</p>
+        if (type == HeaterType.InstantHeater) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            operation = operationVector.get(weekday)</p>
+</p>
+             This is a loop.</p>
+            for (int i = 0;i < 96;i++) <BLOCKQUOTE></p>
+</p>
+</p>
+                 This is an agent decision.</p>
+                if (operation.get(i) == true) <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    boolean flag = true</p>
+                    int counter = 0</p>
+</p>
+                     This is a loop.</p>
+                    while ((flag) && (i < 96) && (counter >= 0)) <BLOCKQUOTE></p>
+</p>
+</p>
+                         This is an agent decision.</p>
+                        if (getMemberOf().isEmpty(i+1) == false) <BLOCKQUOTE></p>
+</p>
+                             This is a task.</p>
+                            loadVector.add(power)</p>
+                            dailyOperation.add(true)</p>
+                            counter--</p>
+</p>
+                             This is an agent decision.</p>
+                            if (counter < 0) <BLOCKQUOTE></p>
+</p>
+                                 This is a task.</p>
+                                flag = false</p>
+</p>
+                            </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                            </BLOCKQUOTE></p>
+</p>
+                        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                             This is a task.</p>
+                            loadVector.add(0)</p>
+                            dailyOperation.add(false)</p>
+                            i++</p>
+</p>
+                             This is an agent decision.</p>
+                            if (i < 96 && operation.get(i) == true) <BLOCKQUOTE></p>
+</p>
+                                 This is a task.</p>
+                                counter++</p>
+</p>
+                            </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+                            </BLOCKQUOTE></p>
+</p>
+                        </BLOCKQUOTE></p>
+</p>
+                    </BLOCKQUOTE></p>
+</p>
+</p>
+                </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                     This is a task.</p>
+                    loadVector.add(0)</p>
+                    dailyOperation.add(false)</p>
+</p>
+                </BLOCKQUOTE></p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            weeklyLoadVector.add(loadVector)</p>
+            weeklyOperation.add(dailyOperation)</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+</p>
+             This is a loop.</p>
+            for (int i = 0;i < 96;i++) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                operation.add(false)</p>
+                dailyOperation.add(false)</p>
+                loadVector.add(0)</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+</p>
+             This is an agent decision.</p>
+            if (RandomDrawAgainstThreshold(0.8)) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                start = (int) RandomDraw(21,40)</p>
+</p>
+            </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                start = (int) RandomDraw(1,20)</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+             This is a loop.</p>
+            for (int i = start;i < start + 8;i++) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                operation.set(i,true)</p>
+                dailyOperation.set(i,true)</p>
+                loadVector.set(i, power)</p>
+                temp = i</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+</p>
+             This is a loop.</p>
+            for (int j = 1;j < 4; j++) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                operation.set((temp + 16*j),true)</p>
+                dailyOperation.set((temp + 16*j),true)</p>
+                loadVector.set((temp + 16*j), power)</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            weeklyLoadVector.add(loadVector)</p>
+            weeklyOperation.add(dailyOperation)</p>
+            operationVector.add(operation)</p>
+</p>
+        </BLOCKQUOTE></p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "showStatus" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Show Status".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "showStatus" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        System.out.println("Name = " + name)</p>
+        System.out.println("Saturation = " + saturation)</p>
+        System.out.println("Consumption Share = " + consumptionShare)</p>
+        System.out.println("Base Load Share = " + baseLoadShare)</p>
+        System.out.println("Power = " + power)</p>
+         This is a task.</p>
+        System.out.println("Cycle Duration = "+ cycleDuration)</p>
+        System.out.println("Occupancy Dependence = "+ od)</p>
+        System.out.println("In Use = " + inUse)</p>
+        System.out.println("Heater Type = " + type)</p>
+         This is a task.</p>
+        Set set = probabilitySeason.entrySet();</p>
+        Iterator it = set.iterator();</p>
+        System.out.println("Probability Season = ")</p>
+</p>
+         This is a loop.</p>
+        while (it.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            Map.Entry me = (Map.Entry)it.next();</p>
+            System.out.println(me.getKey() + " : " + me.getValue() );</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        set = probabilityWeekday.entrySet();</p>
+        it = set.iterator();</p>
+        System.out.println("Probability Weekday = ")</p>
+</p>
+         This is a loop.</p>
+        while (it.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            Map.Entry me = (Map.Entry)it.next();</p>
+            System.out.println(me.getKey() + " : " + me.getValue() );</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Weekly Operation Vector = ")</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0; i < 7;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println("Day " + (i))</p>
+            ListIterator iter =operationVector.get(i).listIterator();</p>
+</p>
+             This is a loop.</p>
+            for (int j = 0;j < 96; j++) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                System.out.println("Quarter : " + (j+1) + "  " + iter.next())</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        System.out.println("Weekly Operation Vector and Load = ")</p>
+</p>
+         This is a loop.</p>
+        for (int i = 0; i < 7;i++) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            System.out.println("Day " + (i))</p>
+            ListIterator iter = weeklyOperation.get(i).listIterator();</p>
+            ListIterator iter2 = weeklyLoadVector.get(i).listIterator();</p>
+</p>
+             This is a loop.</p>
+            for (int j = 0;j < 96; j++) <BLOCKQUOTE></p>
+</p>
+                 This is a task.</p>
+                System.out.println("Quarter " + (j+1) + " = " + iter.next() + "   Load = " + iter2.next())</p>
+</p>
+            </BLOCKQUOTE></p>
+</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "initialize" method has visibility     "public" has return type "def" and parameters [HashMap hm]. This is the step behavior. The block is tagged with the name "Initialize".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "initialize" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        name = "WaterHeater"</p>
+        saturation = (float)hm.get("WaterHeaterSaturation")</p>
+        Random rand = new Random()</p>
+        int x = (int) (RandomDraw(0.0,100.0) + 1)</p>
+        int limit = (int)hm.get("InstantHeater")</p>
+</p>
+         This is an agent decision.</p>
+        if ( x < limit) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            consumptionShare = (float) (0.01 (2.2* rand.nextGaussian() + 13))</p>
+            baseLoadShare = 0</p>
+            power = (int) (2000 rand.nextGaussian() + 12000)</p>
+            cycleDuration = 1</p>
+            setType(HeaterType.InstantHeater)</p>
+             This is a task.</p>
+            times = (float)hm.get("InstantHeaterDailyTimes")</p>
+             This is a task.</p>
+            od = true</p>
+            inUse = false</p>
+            probabilitySeason = fillSeason(24,38,38)</p>
+            probabilityWeekday = fillDay(16,14,14)</p>
+            createWeeklyOperationVector( (int)(times + getMemberOf().members.size()/2))</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            consumptionShare = (float) (0.01 (2.2 rand.nextGaussian() + 13))</p>
+            baseLoadShare = 0</p>
+            power = (int) (500 rand.nextGaussian() + 3000)</p>
+            cycleDuration = 8</p>
+            setType(HeaterType.StorageHeater)</p>
+             This is a task.</p>
+            od = false</p>
+            inUse = false</p>
+            probabilitySeason = fillSeason(24,38,38)</p>
+            probabilityWeekday =fillDay(16,14,14)</p>
+</p>
+        </BLOCKQUOTE></p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "refresh" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Refresh".</li></p>
+    </p>
+    </p>
+ <BLOCKQUOTE>The code for the "refresh" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+</p>
+         This is an agent decision.</p>
+        if (type == HeaterType.InstantHeater) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            times = (float)hm.get("InstantHeaterDailyTimes")</p>
+            createWeeklyOperationVector( (int)(times + getMemberOf().members.size()/2))</p>
+            fillWeeklyFunction()</p>
+            System.out.println("Instant Water Heater refreshed")</p>
+</p>
+        </BLOCKQUOTE> else  <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            fillWeeklyFunction()</p>
+            System.out.println("Storage Water Heater refreshed")</p>
+</p>
+        </BLOCKQUOTE></p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>

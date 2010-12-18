@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent version="1" agentcomment="This is an agent." agentclassname="ModelInitializer" agentparentclassname="" agentinterfaces="" agentimports="">
+  <behaviorsteps>
+    <behaviorstep x="102" y="40" scheduleannotationstart="" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="0" watchannotationtriggerdelta="" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the user model builder" visibility="4" returntype="def" compiledname="initializeModel" parameters="" exceptions="">
+      <label x="93" y="24" text="Initialize Model"/>
+    </behaviorstep>
+  </behaviorsteps>
+  <tasksteps>
+    <taskstep x="105" y="126" comment="This is a task." command1="System.out.println(&quot;WHAT THE FUCK IS WRONG WITH YOU?&quot;)" command2="" command3="HouseHold hh = new HouseHold()" command4="hh.initialize(&quot;House 1&quot;)" command5="Context context = AddAgentToContext(&quot;Consumers&quot;, hh)">
+      <label x="105" y="111" text="Do Task"/>
+    </taskstep>
+  </tasksteps>
+  <decisionsteps/>
+  <joinsteps/>
+  <agentproperties/>
+  <endsteps>
+    <endstep x="115" y="224"/>
+  </endsteps>
+  <connections>
+    <transitions>
+      <transition>
+        <transitionsource type="behavior" index="0" anchor="0"/>
+        <transitiontarget type="task" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="0" anchor="2"/>
+        <transitiontarget type="end" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+    </transitions>
+    <booleantransitions/>
+  </connections>
+</agent>
